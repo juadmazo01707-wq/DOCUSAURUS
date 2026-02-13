@@ -1,0 +1,20 @@
+{
+  "id": "Juan/readme",
+  "title": "Base de datos.",
+  "description": "Contenido teórico.",
+  "source": "@site/docs/Juan/readme.md",
+  "sourceDirName": "Juan",
+  "slug": "/Juan/",
+  "permalink": "/docs/Juan/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/Juan/readme.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Translate your site",
+    "permalink": "/docs/tutorial-extras/translate-your-site"
+  }
+}
