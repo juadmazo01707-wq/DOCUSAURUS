@@ -794,7 +794,7 @@ const pool = mysql.createPool({
 
 ## Recursos Adicionales
 
-- [DocusaurusWeb] (https://docusaurus-e9f64.web.app/)
+- [DocusaurusWeb](https://docusaurus-e9f64.web.app/)
 - [Express.js](https://expressjs.com/es/)
 - [Guía Docusaurus](https://gist.github.com/andrescortesdev/6f7cf37dd45e68dac7f78248e0fffb2a)
 - [Actividad Clase 4](https://gist.github.com/andrescortesdev/af60b67b38e14a1adde6e58fdc45b8a7)
