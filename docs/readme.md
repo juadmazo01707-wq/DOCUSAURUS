@@ -780,13 +780,13 @@ npm install express mysql2
 ```javascript
 // conexion pool ExpressJS con mysql2:
 const pool = mysql.createPool({
-    host: ' ',             // servidor MySQL
-    user: 'root',          // usuario
-    password: ' ',         // contraseña
-    database: ' ',         // base de datos
-    waitForConnections: true,     // si no hay conexiones, esperar
-    connectionLimit: 10,            // máximo de conexiones simultáneas
-    queueLimit: 0                   // sin límite de cola
+    host: ' ',                    // servidor MySQL
+    user: 'root',                // usuario
+    password: ' ',              // contraseña
+    database: ' ',             // base de datos
+    waitForConnections: true, // si no hay conexiones, esperar
+    connectionLimit: 10,     // máximo de conexiones simultáneas
+    queueLimit: 0           // sin límite de cola
 });
 ```
 
@@ -794,10 +794,11 @@ const pool = mysql.createPool({
 
 ## Recursos Adicionales
 
-- [Presentación de la Clase 2](https://www.canva.com/design/DAHA1jxPFmA/6V0965VUuE4b1Yz5rGsYgg/edit)
-- [Actividad Clase 4](https://gist.github.com/andrescortesdev/af60b67b38e14a1adde6e58fdc45b8a7)
-- [Guía Docusaurus](https://gist.github.com/andrescortesdev/6f7cf37dd45e68dac7f78248e0fffb2a)
+- [DocusaurusWeb] (https://docusaurus-e9f64.web.app/)
 - [Express.js](https://expressjs.com/es/)
+- [Guía Docusaurus](https://gist.github.com/andrescortesdev/6f7cf37dd45e68dac7f78248e0fffb2a)
+- [Actividad Clase 4](https://gist.github.com/andrescortesdev/af60b67b38e14a1adde6e58fdc45b8a7)
+- [Presentación de la Clase 2](https://www.canva.com/design/DAHA1jxPFmA/6V0965VUuE4b1Yz5rGsYgg/edit)
 - [Formulario de entrega](https://docs.google.com/forms/d/e/1FAIpQLSerGMjF3yC_NEFIbx8oJT6zbkAkriLp9Niqg5XbJEAt76THsw/viewform)
 
 ---
