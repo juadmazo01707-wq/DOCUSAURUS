@@ -206,63 +206,135 @@ SELECT * FROM users u WHERE u.document_type = 'CC' AND u.is_active = '1';
 
 #### Nivel 1: Fundamentos
 
-| Ejercicio | Descripción | Solución |
-|-----------|-------------|----------|
-| 1 | Listar todos los usuarios | `SELECT * FROM users u;` |
-| 2 | Mostrar solo first_name, last_name, email | `SELECT u.first_name, u.last_name, u.email FROM users u;` |
-| 3 | Filtrar usuarios cuyo role sea 'admin' | `SELECT * FROM users u WHERE role = 'admin'` |
-| 4 | Filtrar usuarios con document_type = 'CC' | `SELECT * FROM users u WHERE u.document_type = 'CC'` |
-| 5 | Mostrar usuarios mayores de 18 años | `SELECT * FROM users u WHERE u.birth_date < '2006-01-01'` |
-| 6 | Mostrar usuarios con ingreso mayor a 5,000,000 | `SELECT * FROM users u WHERE u.monthly_income > '5000000'` |
-| 7 | Mostrar usuarios cuyo nombre empiece por "A" | `SELECT * FROM users u WHERE u.first_name LIKE 'a%'` |
-| 8 | Mostrar usuarios que no tengan company | `SELECT * FROM users u WHERE u.company IS NULL` |
+```sql
+-- Listar todos los usuarios
+SELECT * FROM users u;
+```
+![Evidencia](./img/n1_1.png)
+
+```sql
+-- Mostrar solo first_name, last_name, email
+SELECT u.first_name, u.last_name, u.email FROM users u;
+```
+![Evidencia](./img/n1_2.png)
+
+```sql
+-- Filtrar usuarios cuyo role sea 'admin'
+SELECT * FROM users u WHERE role = 'admin'
+```
+![Evidencia](./img/n1_3.png)
+
+```sql
+-- Filtrar usuarios con document_type = 'CC' 
+SELECT * FROM users u WHERE u.document_type = 'CC'
+```
+![Evidencia](./img/n1_4.png)
+
+```sql
+-- Mostrar usuarios mayores de 18 años
+SELECT * FROM users u WHERE u.birth_date < '2006-01-01'
+```
+![Evidencia](./img/n1_5.png)
+
+```sql
+-- Mostrar usuarios con ingreso mayor a 5,000,000 
+SELECT * FROM users u WHERE u.monthly_income > '5000000'
+```
+![Evidencia](./img/n1_6.png)
+
+```sql
+--  Mostrar usuarios cuyo nombre empiece por "A"
+SELECT * FROM users u WHERE u.first_name LIKE 'a%'
+```
+![Evidencia](./img/n1_7.png)
+
+```sql
+-- Mostrar usuarios que no tengan company 
+SELECT * FROM users u WHERE u.company IS NULL
+```
+![Evidencia](./img/n1_8.png)
 
 #### Nivel 2: Combinación de Condiciones
 
 ```sql
 -- Usuarios mayores de 25 años que sean 'employee'
 SELECT * FROM users u WHERE u.birth_date < '2001-01-01' AND role = 'employee';
+```
+![Evidencia](./img/n2_1.png)
 
+```sql
 -- Usuarios con 'CC' que estén activos
 SELECT * FROM users u WHERE u.document_type = 'CC' AND u.is_active = '1';
+```
+![Evidencia](./img/n2_2.png)
 
+```sql
 -- Usuarios mayores de edad sin empleo
 SELECT * FROM users u WHERE u.birth_date < '2006-01-01' AND u.company IS NULL;
+```
+![Evidencia](./img/n2_3.png)
 
+```sql
 -- Usuarios con empleo y con ingresos mayores a 3,000,000
 SELECT * FROM users u WHERE u.company IS NOT NULL AND u.monthly_income > '3000000';
+```
+![Evidencia](./img/n2_4.png)
 
+```sql
 -- Usuarios casados con al menos 1 hijo
 SELECT * FROM users u WHERE u.marital_status = 'Casado' AND u.children_count >= '1';
+```
+![Evidencia](./img/n2_5.png)
 
+```sql
 -- Usuarios entre 30 y 40 años (Forma 1)
 SELECT * FROM users u WHERE u.birth_date < '1996-01-01' AND u.birth_date > '1986-01-01';
+```
+![Evidencia](./img/n2_6_f1.png)
 
+```sql
 -- Usuarios entre 30 y 40 años (Forma 2 - BETWEEN)
 SELECT * FROM users u WHERE u.birth_date BETWEEN '1986-01-01' AND '1996-01-01';
+```
+![Evidencia](./img/n2_6_f2.png)
 
+```sql
 -- Usuarios 'admin' verificados mayores de 25 años
 SELECT * FROM users u WHERE (u.birth_date < '2001-12-31' AND role = 'admin') AND (is_active = 1);
 ```
+![Evidencia](./img/n2_7.png)
 
 #### Nivel 3: Agregaciones
 
 ```sql
 -- Contar usuarios por role
 SELECT role, COUNT(*) AS 'quantity' FROM users u GROUP BY role;
+```
+![Evidencia](./img/n3_1.png)
 
+```sql
 -- Contar usuarios por document_type
 SELECT document_type, COUNT(*) AS 'quantity' FROM users u GROUP BY u.document_type;
+```
+![Evidencia](./img/n3_2.png)
 
+```sql
 -- Contar cuántos usuarios están desempleados
 SELECT company, COUNT(*) AS 'quantity' FROM users u WHERE company IS NULL GROUP BY u.company;
+```
+![Evidencia](./img/n3_3.png)
 
+```sql
 -- Calcular el promedio general de ingresos
 SELECT AVG(u.monthly_income) AS 'average' FROM users u;
+```
+![Evidencia](./img/n3_4.png)
 
+```sql
 -- Calcular el promedio de ingresos por role
 SELECT role, AVG(u.monthly_income) AS 'average' FROM users u GROUP BY u.role;
 ```
+![Evidencia](./img/n3_5.png)
 
 #### Nivel 4: Pensamiento Analítico
 
@@ -273,19 +345,28 @@ FROM users u
 WHERE profession IS NOT NULL 
 GROUP BY u.profession 
 HAVING COUNT(*) > 10;
+```
+![Evidencia](./img/n4_1.png)
 
+```sql
 -- Mostrar la ciudad con más usuarios
 SELECT city, COUNT(*) AS 'users' 
 FROM users u 
 GROUP BY u.city 
 ORDER BY 'users' LIMIT 1;
+```
+![Evidencia](./img/n4_2.png)
 
+```sql
 -- Comparar cantidad de menores vs mayores de edad
 SELECT CASE WHEN birth_date > '2008-01-01' THEN 'minor' ELSE 'adult' END AS age_group, 
 COUNT(*) AS result 
 FROM users u  
 GROUP BY age_group;
+```
+![Evidencia](./img/n4_3.png)
 
+```sql
 -- Promedio de ingresos por ciudad ordenado de mayor a menor
 SELECT city, AVG(u.monthly_income) AS average 
 FROM users u 
@@ -293,7 +374,10 @@ WHERE u.monthly_income IS NOT NULL
 GROUP BY city, u.monthly_income 
 HAVING COUNT(*) > 0 
 ORDER BY average DESC;
+```
+![Evidencia](./img/n4_4.png)
 
+```sql
 -- Mostrar las 5 personas con mayor ingreso
 SELECT first_name, monthly_income 
 FROM users u 
@@ -301,6 +385,7 @@ WHERE u.monthly_income IS NOT NULL
 GROUP BY u.first_name,u.monthly_income 
 ORDER BY u.monthly_income DESC LIMIT 5;
 ```
+![Evidencia](./img/n4_5.png)
 
 #### Nivel 5: Ingeniero
 
@@ -313,7 +398,10 @@ SELECT first_name,
 FROM users u 
 GROUP BY first_name, u.birth_date 
 ORDER BY u.birth_date DESC;
+```
+![Evidencia](./img/n5_1_f1.png)
 
+```sql
 -- Clasificar usuarios (2da Forma - CASE)
 SELECT first_name,
     CASE 
@@ -324,32 +412,45 @@ SELECT first_name,
 FROM users u 
 GROUP BY first_name, u.birth_date 
 ORDER BY u.birth_date DESC;
+```
+![Evidencia](./img/n5_1_f2.png)
 
+```sql
 -- Mostrar cuántos usuarios hay en cada clasificación
 SELECT 
     COUNT(CASE WHEN birth_date >= '2008-01-01' THEN 0 END) AS minors,
     COUNT(CASE WHEN birth_date BETWEEN '1970-01-01' AND '2008-01-01' THEN 0 END) AS adult,
     COUNT(CASE WHEN birth_date <= '1970-01-01' THEN 0 END) AS older_adult 
 FROM users u;
+```
+![Evidencia](./img/n5_2.png)
 
+```sql
 -- Ranking de ingresos por ciudad
 SELECT city, SUM(u.monthly_income), 
 RANK() OVER (ORDER BY SUM(u.monthly_income) DESC) AS ranking 
 FROM users u 
 GROUP BY u.city;
+```
+![Evidencia](./img/n5_3.png)
 
+```sql
 -- Profesión con mayor ingreso promedio
 SELECT profession, AVG(u.monthly_income) AS average 
 FROM users u 
 GROUP BY u.profession 
 ORDER BY average DESC LIMIT 1;
+```
+![Evidencia](./img/n5_4.png)
 
+```sql
 -- Mostrar usuarios cuyo ingreso esté por encima del promedio general
 SELECT first_name, monthly_income 
 FROM users u 
 WHERE u.monthly_income > (SELECT AVG(u.monthly_income) FROM users u) 
 ORDER BY u.monthly_income DESC;
 ```
+![Evidencia](./img/n5_5.png)
 
 ---
 
@@ -528,6 +629,7 @@ CREATE TABLE students_courses (
     FOREIGN KEY(id_course) REFERENCES courses(id_course)
 );
 ```
+![Evidencia](./img/norma1.png)
 
 ---
 
@@ -595,6 +697,7 @@ CREATE TABLE registrations (
     FOREIGN KEY (id_courses) REFERENCES courses(id_courses)
 );
 ```
+![Evidencia](./img/norma2.png)
 
 ---
 
@@ -676,6 +779,7 @@ CREATE TABLE orders_details (
     FOREIGN KEY (id_product) REFERENCES products(id_product)
 );
 ```
+![Evidencia](./img/norma3.png)
 
 ---
 
@@ -757,6 +861,7 @@ CREATE TABLE operations_details (
     FOREIGN KEY (id_article) REFERENCES articles(id_article)
 );
 ```
+![Evidencia](./img/norma4.png)
 
 ---
 
